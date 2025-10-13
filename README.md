@@ -38,11 +38,13 @@ Matrix factorization decomposes sparse user-item matrix into latent factors:
 
 ### Collaborative Filtering through Matrix Factorization
 
-<img width="1095" height="597" alt="Collaborative Filtering" src="https://github.com/user-attachments/assets/93bc2e5b-7873-428b-90c9-7e859dacbd86" />
-
-**Figure**: Collaborative filtering through matrix factorization.  
-Phase 1 learns latent factors from known interactions (yellow cells).  
-Phase 2 uses these factors to predict unknown interactions (grey cells).
+<div align="center">
+  <img width="400" height="216" alt="Collaborative Filtering" src="https://github.com/user-attachments/assets/93bc2e5b-7873-428b-90c9-7e859dacbd86" />
+  <br>
+  <strong>Figure</strong>: Collaborative filtering through matrix factorization.  
+  Phase 1 learns latent factors from known interactions (yellow cells).  
+  Phase 2 uses these factors to predict unknown interactions (grey cells).
+</div>
 
 
 ### Mathematical Formulation
@@ -93,7 +95,13 @@ Follow these steps to set up and run the project:
 
 ## Implementation Highlights
 
-<img width="332" height="118" alt="CSR Matrix" src="https://github.com/user-attachments/assets/b5f9b42d-015a-4542-8de9-3c7b719c0ca0" />
+<div align="center">
+  <img width="332" height="118" alt="CSR Matrix" src="https://github.com/user-attachments/assets/b5f9b42d-015a-4542-8de9-3c7b719c0ca0" />
+  <br>
+  <strong>Figure</strong>: Sparse matrix storage (CSR format) for memory efficiency.
+</div>
+
+<br><br>
 
 - Sparse matrix storage (CSR format) for memory efficiency
 - Per-user train/test split (80/20) to simulate future predictions
