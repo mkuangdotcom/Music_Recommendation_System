@@ -36,20 +36,64 @@ Matrix factorization decomposes sparse user-item matrix into latent factors:
 - Item factors: 66,959 artists x 100 dimensions
 - Prediction: user_i · artist_j = recommendation score
 
-Confidence-weighted loss handles implicit feedback (play counts):
-- High play counts = high confidence in preference
-- Zero plays = low confidence (could be dislike OR unawareness)
+### Collaborative Filtering through Matrix Factorization
 
-Hyperparameters tuned via random search over 12 trials.
+<img width="1095" height="597" alt="Collaborative Filtering" src="https://github.com/user-attachments/assets/93bc2e5b-7873-428b-90c9-7e859dacbd86" />
 
-## Usage
+**Figure**: Collaborative filtering through matrix factorization.  
+Phase 1 learns latent factors from known interactions (yellow cells).  
+Phase 2 uses these factors to predict unknown interactions (grey cells).
 
-Open notebook in Google Colab. Self-contained with automatic setup:
-- Dependencies installed via pip
-- Dataset auto-downloaded from Zenodo
-- Runs end-to-end without manual configuration
+
+### Mathematical Formulation
+
+The recommendation score for a user-item pair is calculated as:
+
+$$
+\hat{r}_{ui} = \mathbf{p}_u^\top \mathbf{q}_i
+$$
+
+Where:
+- $\hat{r}_{ui}$ is the predicted interaction score for user $u$ and item $i$.
+- $\mathbf{p}_u$ is the latent factor vector for user $u$.
+- $\mathbf{q}_i$ is the latent factor vector for item $i$.
+
+The optimization objective minimizes the confidence-weighted loss:
+
+$$
+\min_{P, Q} \sum_{(u, i) \in \mathcal{R}} c_{ui} (r_{ui} - \mathbf{p}_u^\top \mathbf{q}_i)^2 + \lambda (\|P\|^2 + \|Q\|^2)
+$$
+
+Where:
+- $c_{ui}$ is the confidence weight for the interaction $(u, i)$.
+- $r_{ui}$ is the observed interaction value.
+- $\lambda$ is the regularization parameter.
+
+## Getting Started
+
+Follow these steps to set up and run the project:
+
+### Prerequisites
+- Python 3.8 or higher
+- Git
+- Jupyter Notebook
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mkuangdotcom/Music_Recommendation_System.git
+   cd Music_Recommendation_System
+   ```
+2. Open `User_Centric_Approach_to__Music_Recommendations.ipynb` in Jupyter Notebook.
+   ```bash
+    jupyter notebook User_Centric_Approach_to__Music_Recommendations.ipynb
+    ``` 
+3. Run the notebook
 
 ## Implementation Highlights
+
+<img width="332" height="118" alt="CSR Matrix" src="https://github.com/user-attachments/assets/b5f9b42d-015a-4542-8de9-3c7b719c0ca0" />
 
 - Sparse matrix storage (CSR format) for memory efficiency
 - Per-user train/test split (80/20) to simulate future predictions
